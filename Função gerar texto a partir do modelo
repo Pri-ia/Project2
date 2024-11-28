@@ -1,0 +1,40 @@
+#Função para gerar texto a partir do modelo
+def gera_texto(texto):
+
+  #Obtém a resposta do modelo de linguagem
+  response = openai.Completion.create(
+
+    #Modelo usado
+    engine = "text-davinci-003",
+
+    #Começo da conversa com chatbot
+    prompt = texto,
+
+    #Tamanho da resposta gerada pelo modelo.
+    max_tokens = 150,
+
+    #Quantas conclusões gerar para cada prompt.
+    n = 5,
+
+    #O texto retornado não conterá a sequência de parada
+    stop = None,
+
+    #Uma medida da aletoriedade de um texto gerado pelo modelo. Seu valor entre 0,1.
+    #Valores próximos a 1 significam que a saída é mais aleatória, e próx a 0 que é muito identificável.
+    temperature = 0.8,
+)
+
+return response.choices[0].text.strip()
+
+
+
+
+
+
+
+
+
+
+
+
+
